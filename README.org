@@ -1,5 +1,5 @@
 * doom
-orginally copied from [[Academic-Doom-Emacs-Config][https://github.com/sunnyhasija/Academic-Doom-Emacs-Config]], tweaked in some places. 
+orginally copied from [[https://github.com/sunnyhasija/Academic-Doom-Emacs-Config][Academic-Doom-Emacs-Config]], tweaked in some places. 
 
 * mpv
 in progress
