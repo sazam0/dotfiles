@@ -1,3 +1,18 @@
+* steps
+A short version collected from [[https://writingco.de/blog/how-i-manage-my-dotfiles-using-gnu-stow/][How I manage my dotfiles using GNU Stow]]
+1. install stow
+~sudo apt install stow~
+2. create dot file folder
+   ~~/repos/dotfiles~
+3. mv your dotfiles  into ~~/repos/dotfiles~. for example
+   #+begin_src sh
+mv ~/.gitconfig ~/repos/dotfiles/git 
+   #+end_src
+4. stow the directory from =dotfiles= directory
+   #+begin_src sh
+stow -v -R -t ~ git
+   #+end_src
+   
 * doom
 orginally copied from [[https://github.com/sunnyhasija/Academic-Doom-Emacs-Config][Academic-Doom-Emacs-Config]], tweaked in some places. 
 
