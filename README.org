@@ -3,9 +3,9 @@ A short version collected from [[https://writingco.de/blog/how-i-manage-my-dotfi
 
 1. install stow =sudo apt install stow=
 2. create dot file folder =~/repos/dotfiles=
-#+begin_src sh
+   #+begin_src sh
     mkdir ~/repos/dotfiles
-#+end_src
+   #+end_src
 3. mv your dotfiles  into =~/repos/dotfiles=. for example
    #+begin_src sh
     mv ~/.gitconfig ~/repos/dotfiles/git 
