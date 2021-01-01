@@ -128,42 +128,42 @@
 
     ;; vhdl programming
    ("ha" "vhdl programming" entry (file "~/Dropbox/Org/vhdl.org")
-    "* %^{Question}\n#+Created: %T\n#+tags: %^{tag|design|testbench|assertion}\n\n#+Explanation: ?"
+    "* %^{Question}\n#+Created: %U\n#+tags: %^{tag|design|testbench|assertion}\n\n#+Explanation: ?"
      :empty-lines 1
      :prepend t
      :unnarrowed t)
 
    ;; vhdl bookmark
    ("hb" "vhdl bookmark" entry (file "~/Dropbox/Org/vhdl.org")
-    "* %a \n%T\n#+tags: %^{tag|design|testbench|assertion}\n#+description: %i\n#+comment: %?"
+    "* %a \n%U\n#+tags: %^{tag|design|testbench|assertion}\n#+description: %i\n#+comment: %?"
     :empty-lines 1
      :prepend t
      :unnarrowed t)
 
     ;; verilog programming
    ("hc" "verilog programming" entry (file "~/Dropbox/Org/verilog.org")
-    "* %^{Question}\n#+Created: %T\n#+tags: %^{tag|design|testbench|assertion}\n\n#+Explanation: ?"
+    "* %^{Question}\n#+Created: %U\n#+tags: %^{tag|design|testbench|assertion}\n\n#+Explanation: ?"
      :empty-lines 1
      :prepend t
      :unnarrowed t)
 
     ;; verilog bookmark
    ("hd" "verilog bookmark" entry (file "~/Dropbox/Org/verilog.org")
-    "* %a \n%T\n#+tags: %^{tag|design|testbench|assertion}\n#+description: %i\n#+comment: %?"
+    "* %a \n%U\n#+tags: %^{tag|design|testbench|assertion}\n#+description: %i\n#+comment: %?"
     :empty-lines 1
      :prepend t
      :unnarrowed t)
 
    ;; systemVerilog  programming
    ("he" "system verilog programming" entry (file "~/Dropbox/Org/sysVerilog.org")
-    "* %^{Question}\n#+Created: %T\n#+tags: %^{tag|design|testbench|assertion}\n\n#+Explanation: ?"
+    "* %^{Question}\n#+Created: %U\n#+tags: %^{tag|design|testbench|assertion}\n\n#+Explanation: ?"
      :empty-lines 1
      :prepend t
      :unnarrowed t)
 
      ;; systemVerilog bookmark
    ("hf" "system verilog bookmark" entry (file "~/Dropbox/Org/sysVerilog.org")
-   "* %a \n%T\n#+tags: %^{tag|design|testbench|assertion}\n#+description: %i\n#+comment: %?"
+   "* %a \n%U\n#+tags: %^{tag|design|testbench|assertion}\n#+description: %i\n#+comment: %?"
     :empty-lines 1
      :prepend t
      :unnarrowed t)
@@ -242,14 +242,14 @@
 
       ;; health guideline
      ("ea" "health guidline" entry (file "~/Dropbox/Org/exclusive/hGuideline.org")
-      "* %a \n%T\n#+tag: %^{tag|nutrition|yoga|workouts}\n#+description: %i\n#+comment: %?\n** TODO: ?"
+      "* %a \n%U\n#+tag: %^{tag|nutrition|yoga|workouts}\n#+description: %i\n#+comment: %?\n** TODO: ?"
        :empty-lines 1
        :prepend t
        :unnarrowed t)
 
      ;; life lessons and quotes
        ("eb" "life lessons and quotes" entry (file "~/Dropbox/Org/exclusive/hLifeLessons.org")
-        "* %a \n%T\n#+person: %^{person}\n#+description: %i\n\n** Quote: %?"
+        "* %a \n%U\n#+person: %^{person}\n#+description: %i\n\n** Quote: %?"
          :empty-lines 1
          :prepend t
          :unnarrowed t)
@@ -337,23 +337,23 @@
         :unnarrowed t)
 
      ("z" "opened buffers" entry (function org-opened-buffers)
-         "* %a \n%T\n%i"
+         "* %a \n%U\n%i"
       	:empty-lines 1
       	:unnarrowed t)
 
       ("u" "recent buffers" entry (function org-recent-buffers)
-         "* %a \n%T\n%i"
+         "* %a \n%U\n%i"
       	:empty-lines 1
       	:unnarrowed t)
 
       ("x" "daily notes" entry (function org-journal-find-location)
-         "* %a \n%T\n%i"
+         "* %a \n%U\n%i"
       	:empty-lines 1
       	:unnarrowed t)
 
 
       ("v" "new note" plain (function find-blog-post-for-capture)
-        "* %a \n%T\n%i"
+        "* %a \n%U\n%i"
       	:empty-lines 1
       	:unnarrowed t)
 
