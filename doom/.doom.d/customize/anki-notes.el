@@ -46,4 +46,14 @@
       :unnarrowed t
       :immediate-finish t)
       )
+
+
+  (add-to-list 'org-capture-templates
+    '(
+      "ac" "quick img" entry (file "~/Dropbox/ankiNotes/fixedDeck.org")
+      "* %^{slide name}\n#+time_pos: %i"
+      :empty-lines 2
+      :unnarrowed t
+      :immediate-finish t)
+      )
 )
