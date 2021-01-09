@@ -23,6 +23,6 @@
 
 (setq org-refile-use-cache t)
 
-(run-with-idle-timer 300 t (lambda ()
+(run-with-idle-timer 15 t (lambda ()
     (org-refile-cache-clear)
     (org-refile-get-targets)))
