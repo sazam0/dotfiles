@@ -195,6 +195,16 @@
 ;; (use-package! org-roam-protocol
 ;;   :after org-protocol)
 
+;; org-drill
+;; configuration from: https://www.youtube.com/watch?v=uraPXeLfWcM
+;;
+(use-package org-drill
+  :config
+  (setq org-drill-hint-separator "||")
+  (setq org-drill-left-cloze-delimiter "<[")
+  (setq org-drill-right-cloze-delimiter "]>")
+  (setq org-drill-learn-fraction 0.25)
+  )
 ;; org-journal the DOOM way
 (use-package org-journal
   :init
@@ -339,13 +349,13 @@
 
 (add-hook 'Info-mode-hook #'mixed-pitch-mode)
 
-
+(org-add-link-type "mpv" (lambda (path) (browse-url-xdg-open path)))
+(org-add-link-type "img" (lambda (path) (browse-url-xdg-open path)))
 
 (load! "./customize/org-templates")
 (load! "./customize/anki-notes")
 (load! "./customize/refile")
 (load! "./customize/links")
-
 
 
 ;; (global-set-key (kbd "F10") 'my-copy-id-to-clipboard)

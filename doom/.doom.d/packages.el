@@ -56,6 +56,7 @@
 (package! org-roam-server :recipe (:host github :repo "org-roam/org-roam-server" :files ("*")))
 (unpin! org-roam)
 (package! org-download)
+(package! org-drill)
 ;(package! nov)                                             not using anymore as epub note taking is annoying in nov.el
 (package! rotate)
 ;(package! xkcd)
