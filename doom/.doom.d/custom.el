@@ -6,7 +6,7 @@
  '(org-agenda-files nil)
  '(org-journal-date-format "%A, %d %B %Y")
  '(org-journal-date-prefix "#+TITLE: ")
- '(org-journal-dir "~/Dropbox/Org/Daily/")
+ '(org-journal-dir "~/Nextcloud/org/Daily/")
  '(org-journal-file-format "%Y-%m-%d.org")
  '(package-selected-packages (quote (org-fancy-priorities))))
 (custom-set-faces

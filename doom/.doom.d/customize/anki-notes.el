@@ -3,7 +3,7 @@
 
 (setq anki-external-source "adsII/2020-ws-ads2-02-1s-v03.pdf"
       anki-deck "adsII")
-
+(setq ~ (getenv "HOME"))
 
 
 (use-package! anki-editor
@@ -34,9 +34,9 @@
 
   (add-to-list 'org-capture-templates
     '(
-      "ab" "deck :: fixed" entry (file "~/Dropbox/ankiNotes/fixedDeck.org")
-"* %l\n:PROPERTIES:\n:ANKI_DECK: tuk::%(print anki-deck)
-:ANKI_NOTE_TYPE: lectures\n:END:\n** question\n%^{question} :drill:
+      "ab" "deck :: fixed" entry (file "~/Nextcloud/org/fixedDeck.org")
+"* %i\n:PROPERTIES:\n:ANKI_DECK: tuk::%(print anki-deck)
+:ANKI_NOTE_TYPE: lectures\n:END:\n** question :drill:\n%^{question}
 *** topic\n%^{topic}
 *** notes\n%^{notes}%?
 ** external_source\n%(print anki-external-source)\n** external_page\n%^{page no:}"
@@ -48,9 +48,9 @@
 
   (add-to-list 'org-capture-templates
     '(
-      "ac" "quick img" entry (file "~/Dropbox/ankiNotes/fixedDeck.org")
-      "* %^{slide name}\n#+url: %l"
-      :empty-lines 2
+      "ac" "quick img" entry (file "~/Nextcloud/org/fixedDeck.org")
+      "* %^{slide name}\n#+url: %i"
+      :empty-lines 1
       :unnarrowed t
       :immediate-finish t)
       )

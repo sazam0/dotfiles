@@ -82,7 +82,7 @@
    (buffer-face-mode))
  (add-hook 'org-mode-hook 'my-buffer-face-mode-variable)
 
-(setq org-directory "~/Dropbox/Org/")
+(setq org-directory "~/Nextcloud/org/")
 
 (use-package! org-ref
     :after org
@@ -91,10 +91,10 @@
     :config
     ; code to run after loading org-ref
     )
-(setq org-ref-notes-directory "~/Dropbox/Org/refNotes"
-      org-ref-bibliography-notes "~/Dropbox/Org/references/articles.org" ;; not needed anymore. Notes now taken in org-roaM
-      org-ref-default-bibliography '("~/Dropbox/Org/references/GaN-highpower.bib")
-      org-ref-pdf-directory "~/Dropbox/MendeleyFiles/"
+(setq org-ref-notes-directory "~/Nextcloud/org/roamDir"
+      org-ref-bibliography-notes "~/Nextcloud/org/articles.org" ;; not needed anymore. Notes now taken in org-roaM
+      org-ref-default-bibliography '("~/Nextcloud/org/bibRepo/GaN-highpower.bib")
+      org-ref-pdf-directory "~/Nextcloud/literature/"
       org-ref-completion-library 'org-ref-ivy-cite
       org-ref-get-pdf-filename-function 'org-ref-get-pdf-filename-helm-bibtex)
 
@@ -103,7 +103,7 @@
 ;;                '(("a"               ; key
 ;;                   "Article"         ; name
 ;;                   entry             ; type
-;;                   (file+headline "~/Dropbox/Org/phd.org" "Article")  ; target
+;;                   (file+headline "~/Nextcloud/org/phd.org" "Article")  ; target
 ;;                   "\* %^{Title} %(org-set-tags)  :article: \n:PROPERTIES:\n:Created: %U\n:Linked: %a\n:END:\n%i\nBrief description:\n%?"  ; template
 ;;
 ;;                   :prepend t        ; properties
@@ -127,9 +127,9 @@
 (setq
       bibtex-completion-pdf-field "file"
       bibtex-completion-bibliography
-      '("~/Dropbox/Org/references/GaN-highpower.bib")
-      bibtex-completion-library-path '("~/Dropbox/MendeleyFiles/")
-      bibtex-completion-notes-path "~/Dropbox/Org/references/articles.org"  ;; not needed anymore as I take notes in org-roam
+      '("~/Nextcloud/org/bibRepo/GaN-highpower.bib")
+      bibtex-completion-library-path '("~/Nextcloud/literature/")
+      bibtex-completion-notes-path "~/Nextcloud/org/articles.org"  ;; not needed anymore as I take notes in org-roam
       )
 
 (use-package! zotxt
@@ -149,7 +149,7 @@
 (setq org-pandoc-format-extensions '(markdown_github+pipe_tables+raw_html))
 
 (use-package! org-roam-bibtex
-  :load-path "~/Dropbox/Org/references/GaN-highpower.bib" ;Modify with your own path
+  :load-path "~/Nextcloud/org/bibRepo/GaN-highpower.bib" ;Modify with your own path
   :hook (org-roam-mode . org-roam-bibtex-mode)
   :bind (:map org-mode-map
          (("C-c n a" . orb-note-actions))))
@@ -178,7 +178,7 @@
 :END:")))
 
 ; org-roam settings
-(setq org-roam-directory "~/Dropbox/Org/refNotes")
+(setq org-roam-directory "~/Nextcloud/org/roamDir")
 (after! org-roam
         (map! :leader
             :prefix "n"
@@ -208,7 +208,7 @@
 ;; org-journal the DOOM way
 (use-package org-journal
   :init
-  (setq org-journal-dir "~/Dropbox/Org/Daily/"
+  (setq org-journal-dir "~/Nextcloud/org/Daily/"
         org-journal-date-prefix "#+TITLE: "
         org-journal-file-format "%Y-%m-%d.org"
         org-journal-date-format "%A, %d %B %Y")
@@ -236,7 +236,7 @@
       (deft-recursive t)
       (deft-use-filter-string-for-filename t)
       (deft-default-extension "org")
-      (deft-directory "~/Dropbox/Org/refNotes/"))
+      (deft-directory "~/Nextcloud/org/roamDir/"))
 
 (use-package! org-roam-server
   :after org-roam
@@ -292,7 +292,7 @@
       org-agenda-block-separator nil
       org-agenda-tags-column 100 ;; from testing this seems to be a good value
       org-agenda-compact-blocks t)
-(setq org-agenda-files "~/Dropbox/Org/Daily/")
+(setq org-agenda-files "~/Nextcloud/org/Daily/")
 (load! "./agenda-commands")
 
 (custom-set-variables
@@ -302,7 +302,7 @@
  ;; If there is more than one, they won't work right.
  '(org-journal-date-format "%A, %d %B %Y" t)
  '(org-journal-date-prefix "#+TITLE: " t)
- '(org-journal-dir "~/Dropbox/Org/Daily/" t)
+ '(org-journal-dir "~/Nextcloud/org/Daily/" t)
  '(org-journal-file-format "%Y-%m-%d.org" t)
  '(package-selected-packages (quote (org-fancy-priorities))))
 (custom-set-faces
