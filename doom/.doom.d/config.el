@@ -71,7 +71,8 @@
 ;(setq doom-theme 'zaiste)
 (setq doom-theme 'doom-flatwhite)
 ;;dark themes
-;;(setq doom-theme 'doom-palenight)
+;(setq doom-theme 'doom-palenight)
+(setq doom-theme 'doom-solarized-dark)
 
 (setq display-line-numbers-type 'relative)
 

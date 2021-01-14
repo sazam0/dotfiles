@@ -296,8 +296,8 @@
           ("k" "keyboard binding")
 
        ;; general software
-      ("ka" "general software" entry (file "~/Nextcloud/org/keyBindings.org")
-       "* %^{??}\t\t:%^{software}:\n#+key binding: %^{key binding}"
+      ("ka" "software installation guide" entry (file "~/Nextcloud/org/installationGuide.org")
+       "* %^{software name}\n** steps:\n\n** references:\n%?"
         :immediate-finish t
         :prepend t
         :empty-lines 1
