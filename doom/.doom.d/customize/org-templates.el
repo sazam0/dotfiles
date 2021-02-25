@@ -63,6 +63,7 @@
    "* %a \n%T\n#+tags: %^{tag|numpy|pandas|matlplotlib|tensorflow|pytorch}\n#+description: %i\n#+comment: %?"
     :empty-lines 1
      :prepend t
+     :immediate-finish t
      :unnarrowed t)
 
     ;; javascript programming
@@ -77,6 +78,7 @@
    "* %a \n#+created: %T\n#+tags: %^{tag|react|chrome extension|solid js}\n#+comment: %?\n%i"
     :empty-lines 1
      :prepend t
+     :immediate-finish t
      :unnarrowed t)
 
    ;; c programming
@@ -91,6 +93,7 @@
    "* %a \n%T\n#+tags: %^{tag}\n#+description: %i\n#+comment: %?"
     :empty-lines 1
      :prepend t
+     :immediate-finish t
      :unnarrowed t)
 
    ;; c++ programming
@@ -102,10 +105,11 @@
 
      ;; c++ bookmark
    ("ph" "c++ bookmark" entry (file "~/Nextcloud/org/pcc.org")
-   "* %a \n%T\n#+tags: %^{tag}\n#+description: %i\n#+comment: %?"
+   "* %a \n%U\n#+tags: %^{tag}\n#+comment: %?\n%i"
     :empty-lines 1
-     :prepend t
-     :unnarrowed t)
+    :prepend t
+    :immediate-finish t
+    :unnarrowed t)
 
   ;; elisp programming
    ("pi" "elisp programming" entry (file "~/Nextcloud/org/pElisp.org")
@@ -119,6 +123,7 @@
    "* %a \n%T\n#+tags: %^{tag}\n#+description: %i\n#+comment: %?"
     :empty-lines 1
      :prepend t
+     :immediate-finish t
      :unnarrowed t)
 
      ;;
@@ -175,9 +180,10 @@
 
     ;; university lectures bookmark
    ("ya" "university lectures" entry (file "~/Nextcloud/org/yLectures.org")
-    "* %a \n%T\n#+subject: %^{subject|digital|analog|learning|physics}\n#+course: %^{course}\t\t\t\tyear: %^{year}\n#+professor: %^{professor}\n#+university: %^{university}\n#+description: %i\n#+comment: %?"
+    "* %a \n%U\n#+subject: %^{subject|digital|analog|learning|physics|numeric}\n#+year: %^{year}\n#+professor: %^{professor}\n#+university: %^{university}\n#+comment: %?\n%i"
      :empty-lines 1
-     :prepend t
+     :t prepend
+     :immediate-finish t
      :unnarrowed t)
     ;; "* %a \n%T\n#+category: %^{tag}\n %i"
 
@@ -261,32 +267,34 @@
 
        ;; todo
       ("sa" "TODO" entry (file+datetree "~/Nextcloud/org/exclusive/schedule.org")
-       "* TODO: %^{TODO}"
+       "* TODO %^{TODO}"
         :empty-lines 1
+        :immediate-finish t
         :unnarrowed t)
 
       	;; todo + deadline
         ("sb" "TODO + deadline" entry (file "~/Nextcloud/org/exclusive/schedule.org")
-         "* TODO: %^{TODO}\n#+deadline: %^t"
+         "* TODO %^{TODO}\n#+deadline: %^t"
           :empty-lines 1
           :unnarrowed t)
 
 	;; todo + deadline + place
         ("sc" "TODO + deadline + place" entry (file "~/Nextcloud/org/exclusive/schedule.org")
-         "* TODO: %^{TODO}\n#+deadline: %^t\n#+place: %?"
+         "* TODO %^{TODO}\n#+deadline: %^t\n#+place: %?"
           :empty-lines 1
           :unnarrowed t)
 
 	;; todo + deadline + place + contact
         ("sd" "TODO + deadline + place + contact(url, email, phone)" entry (file "~/Nextcloud/org/exclusive/schedule.org")
-         "* TODO: %^{TODO}\n#+deadline: %^t\n#+place: %?\n#+contact: %?"
+         "* TODO %^{TODO}\n#+deadline: %^t\n#+place: %?\n#+contact: %?"
           :empty-lines 1
           :unnarrowed t)
 
 	;; todo + deadline + place + contact + description
         ("se" "TODO + deadline + place + contact + description" entry (file "~/Nextcloud/org/exclusive/schedule.org")
-         "* TODO: %^{TODO}\n#+deadline: %^t\n#+place: %?\n#+contact: %?\n#+descriptoin: %?"
+         "* TODO %^{TODO}\n#+deadline: %^t\n#+place: %?\n#+contact: %?\n#+descriptoin: %?"
           :empty-lines 1
+          :immediate-finish t
           :unnarrowed t)
 
 
@@ -331,6 +339,13 @@
          ;; git
       ("ke" "git" entry (file+headline "~/Nextcloud/org/keyBindings.org" "git")
        "* %^{??}\t\t:vim:\n#+key binding: %^{key binding}"
+        :immediate-finish t
+        ;; :prepend t
+        :empty-lines 1
+        :unnarrowed t)
+
+      ("kf" "linux" entry (file+headline "~/Nextcloud/org/keyBindings.org" "linux")
+       "* %^{??}\t\t:linux:\n#+key binding: %^{key binding}"
         :immediate-finish t
         ;; :prepend t
         :empty-lines 1

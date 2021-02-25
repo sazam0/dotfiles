@@ -1,10 +1,10 @@
 
 
-
-(setq anki-external-source "adsII/2020-ws-ads2-02-1s-v03.pdf"
-      anki-deck "adsII")
-(setq ~ (getenv "HOME"))
-
+(setq anki-external-source "vds/verif-2021-6.pdf")
+;      anki-deck "vds"
+;(setq ~ (getenv "HOME"))
+(setq noteVideo-a "../../noteVideo/")
+(setq noteVideo-b "/media/sanDisk64/noteVideo/")
 
 (use-package! anki-editor
 
@@ -35,11 +35,12 @@
   (add-to-list 'org-capture-templates
     '(
       "ab" "deck :: fixed" entry (file "~/Nextcloud/org/fixedDeck.org")
-"* %i\n:PROPERTIES:\n:ANKI_DECK: tuk::%(print anki-deck)
-:ANKI_NOTE_TYPE: lectures\n:END:\n** question :drill:\n%^{question}
-*** topic\n%^{topic}
-*** notes\n%^{notes}%?
-** external_source\n%(print anki-external-source)\n** external_page\n%^{page no:}"
+;* %i\n:PROPERTIES:\n:ANKI_DECK: tuk::%(print anki-deck)
+"* %^{question}\t:drill:\n----
+** topic\n%^{topic}
+** notes\n- check the slides
+** video\n%i
+** slide\n%(print anki-external-source) [pp: %^{page no:}]"
       :empty-lines 2
       :unnarrowed t
       :immediate-finish t)
@@ -49,7 +50,7 @@
   (add-to-list 'org-capture-templates
     '(
       "ac" "quick img" entry (file "~/Nextcloud/org/fixedDeck.org")
-      "* %^{slide name}\n#+url: %i"
+      "* %^{slide name}\n#+url-1:[[%(print noteVideo-a)%i]]\n#+url-2:[[%(print noteVideo-b)%i]]\n%i"
       :empty-lines 1
       :unnarrowed t
       :immediate-finish t)

@@ -1,4 +1,11 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
+
+;; Place your private configuration here! Remember, you do not need to run 'doom
+;; sync' after modifying this file!
+
+
+;; Some functionality uses this to identify you, e.g. GPG configuration, email
+;; clients, file templates and snippets.
 (setq user-full-name "sazam"
       user-mail-address "azamtariful0@gmail.com")
 
@@ -66,22 +73,53 @@
          (unless (string= "-" project-name)
            (format (if (buffer-modified-p)  " ◉ %s" "  ●  %s") project-name))))))
 
-;;light themes
-;(setq doom-theme 'doom-gruvbox-light)
-;(setq doom-theme 'zaiste)
-(setq doom-theme 'doom-flatwhite)
-;;dark themes
-;(setq doom-theme 'doom-palenight)
+;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
+;; are the three important ones:
+;;
+;; + `doom-font'
+;; + `doom-variable-pitch-font'
+;; + `doom-big-font' -- used for `doom-big-font-mode'; use this for
+;;   presentations or streaming.
+;;
+;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
+;; font string. You generally only need these two:
+;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
+;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
+
+;; There are two ways to load a theme. Both assume the theme is installed and
+;; available. You can either set `doom-theme' or manually load a theme with the
+;; `load-theme' function. This is the default:
+;; (setq doom-theme 'doom-one)
 (setq doom-theme 'doom-solarized-dark)
 
+;; (setq display-line-numbers-type t)
 (setq display-line-numbers-type 'relative)
 
- (defun my-buffer-face-mode-variable ()
-   "Set font to a variable width (proportional) fonts in current buffer"
-   (interactive)
+
+;; Here are some additional functions/macros that could help you configure Doom:
+;;
+;; - `load!' for loading external *.el files relative to this one
+;; - `use-package!' for configuring packages
+;; - `after!' for running code after a package has loaded
+;; - `add-load-path!' for adding directories to the `load-path', relative to
+;;   this file. Emacs searches the `load-path' when you load packages with
+;;   `require' or `use-package'.
+;; - `map!' for binding new keys
+;;
+;; To get information about any of these functions/macros, move the cursor over
+;; the highlighted symbol at press 'K' (non-evil users must press 'C-c c k').
+;; This will open documentation for it, including demos of how they are used.
+;;
+;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
+;; they are implemented.
+
+
+(defun my-buffer-face-mode-variable ()
+  "Set font to a variable width (proportional) fonts in current buffer"
+  (interactive)
 ;   (setq buffer-face-mode-face '(:family "Menlo" :height 95 ))
-   (buffer-face-mode))
- (add-hook 'org-mode-hook 'my-buffer-face-mode-variable)
+  (buffer-face-mode))
+(add-hook 'org-mode-hook 'my-buffer-face-mode-variable)
 
 (setq org-directory "~/Nextcloud/org/")
 
@@ -99,18 +137,6 @@
       org-ref-completion-library 'org-ref-ivy-cite
       org-ref-get-pdf-filename-function 'org-ref-get-pdf-filename-helm-bibtex)
 
-;; (after! org
-;;   (add-to-list 'org-capture-templates
-;;                '(("a"               ; key
-;;                   "Article"         ; name
-;;                   entry             ; type
-;;                   (file+headline "~/Nextcloud/org/phd.org" "Article")  ; target
-;;                   "\* %^{Title} %(org-set-tags)  :article: \n:PROPERTIES:\n:Created: %U\n:Linked: %a\n:END:\n%i\nBrief description:\n%?"  ; template
-;;
-;;                   :prepend t        ; properties
-;;                   :empty-lines 1    ; properties
-;;                   :created t        ; properties
-;; ))) )
 
 (use-package! helm-bibtex
   :after org
@@ -133,9 +159,6 @@
       bibtex-completion-notes-path "~/Nextcloud/org/articles.org"  ;; not needed anymore as I take notes in org-roam
       )
 
-(use-package! zotxt
-  :after org)
-;(add-to-list 'load-path (expand-file-name "ox-pandoc" starter-kit-dir))
 
 (use-package! ox-pandoc
   :after org)
@@ -184,48 +207,49 @@
         (map! :leader
             :prefix "n"
             :desc "org-roam" "l" #'org-roam
-            :desc "org-roam-insert" "i" #'org-roam-insert
+            ;; :desc "org-roam-insert" "i" #'org-roam-insert
             :desc "org-roam-switch-to-buffer" "b" #'org-roam-switch-to-buffer
             :desc "org-roam-find-file" "f" #'org-roam-find-file
             :desc "org-roam-show-graph" "g" #'org-roam-show-graph
             :desc "org-roam-insert" "i" #'org-roam-insert
             :desc "org-roam-capture" "c" #'org-roam-capture))
             ;; :desc "org-roam-store-link" "I" #'org-roam-store-link))
+(use-package! org-roam-protocol :after org-protocol)
 
-; from orginial file
-;; (use-package! org-roam-protocol
-;;   :after org-protocol)
 
-;; org-drill
-;; configuration from: https://www.youtube.com/watch?v=uraPXeLfWcM
-;;
 (use-package org-drill
-  :config
-  (setq org-drill-hint-separator "||")
-  (setq org-drill-left-cloze-delimiter "<[")
-  (setq org-drill-right-cloze-delimiter "]>")
-  (setq org-drill-learn-fraction 0.25)
-  )
+ :config
+ (setq org-drill-hint-separator "||")
+ (setq org-drill-left-cloze-delimiter "<[")
+ (setq org-drill-right-cloze-delimiter "]>")
+ (setq org-drill-learn-fraction 0.95)
+ (setq org-drill-cram-hours 1)
+ (setq org-drill-sm5-initial-interval 0.1)
+ (setq org-drill-maximum-duration nil)
+ (setq org-drill-maximum-items-per-session nil)
+ (setq org-drill-save-buffers-after-drill-sessions-p nil)
+;; (setq org-drill-spaced-repetition-algorithm 'sm2)
+ )
 ;; org-journal the DOOM way
 (use-package org-journal
-  :init
-  (setq org-journal-dir "~/Nextcloud/org/Daily/"
-        org-journal-date-prefix "#+TITLE: "
-        org-journal-file-format "%Y-%m-%d.org"
-        org-journal-date-format "%A, %d %B %Y")
-  :config
-  (setq org-journal-find-file #'find-file-other-window )
-  (map! :map org-journal-mode-map
-        "C-c n s" #'evil-save-modified-and-close )
+ :init
+ (setq org-journal-dir "~/Nextcloud/org/Daily/"
+       org-journal-date-prefix "#+TITLE: "
+       org-journal-file-format "%Y-%m-%d.org"
+       org-journal-date-format "%A, %d %B %Y")
+ :config
+ (setq org-journal-find-file #'find-file-other-window )
+ (map! :map org-journal-mode-map
+       "C-c n s" #'evil-save-modified-and-close )
 
-  (defun org-journal-find-location ()
-   ;; Open today's journal, but specify a non-nil prefix argument in order to
-   ;; inhibit inserting the heading; org-capture will insert the heading.
-   (org-journal-new-entry t)
-   ;; Position point on the journal's top-level heading so that org-capture
-   ;; will add the new entry as a child entry.
-   (goto-char (point-min)))
-  )
+ (defun org-journal-find-location ()
+  ;; Open today's journal, but specify a non-nil prefix argument in order to
+  ;; inhibit inserting the heading; org-capture will insert the heading.
+  (org-journal-new-entry t)
+  ;; Position point on the journal's top-level heading so that org-capture
+  ;; will add the new entry as a child entry.
+  (goto-char (point-min)))
+ )
 
 (setq org-journal-enable-agenda-integration t)
 
@@ -246,6 +270,10 @@
         org-roam-server-port 8080
         org-roam-server-export-inline-images t
         org-roam-server-authenticate nil
+        org-roam-server-serve-files nil
+        org-roam-server-served-file-extensions '("pdf" "mp4" "ogv")
+        org-roam-server-network-poll t
+        org-roam-server-network-arrows nil
         org-roam-server-label-truncate t
         org-roam-server-label-truncate-length 60
         org-roam-server-label-wrap-length 20)
@@ -264,54 +292,28 @@
         (("s-Y" . org-download-screenshot)
          ("s-y" . org-download-yank))))
 
-;(after! centaur-tabs
- ; (centaur-tabs-mode -1)
-  ;(setq centaur-tabs-height 36
-   ;     centaur-tabs-set-icons t
-    ;    centaur-tabs-modified-marker "o"
-     ;   centaur-tabs-close-button "×"
-      ;  centaur-tabs-set-bar 'above)
-       ; centaur-tabs-gray-out-icons 'buffer
-  ;(centaur-tabs-change-fonts "P22 Underground Book" 160))
-;; (setq x-underline-at-descent-line t)
 
- (use-package! org-fancy-priorities
+(use-package! org-fancy-priorities
 ; :ensure t
-  :hook
-  (org-mode . org-fancy-priorities-mode)
-  :config
-   (setq org-fancy-priorities-list '("⚡" "⬆" "⬇" "☕")))
+ :hook
+ (org-mode . org-fancy-priorities-mode)
+ :config
+  (setq org-fancy-priorities-list '("⚡" "⬆" "⬇" "☕")))
 
 (use-package! org-super-agenda
-  :commands (org-super-agenda-mode))
+ :commands (org-super-agenda-mode))
 (after! org-agenda
-  (org-super-agenda-mode))
+ (org-super-agenda-mode))
 
 (setq org-agenda-skip-scheduled-if-done t
-      org-agenda-skip-deadline-if-done t
-      org-agenda-include-deadlines t
-      org-agenda-block-separator nil
-      org-agenda-tags-column 100 ;; from testing this seems to be a good value
-      org-agenda-compact-blocks t)
-(setq org-agenda-files "~/Nextcloud/org/Daily/")
-(load! "./agenda-commands")
+     org-agenda-skip-deadline-if-done t
+     org-agenda-include-deadlines t
+     org-agenda-block-separator nil
+     org-agenda-tags-column 100 ;; from testing this seems to be a good value
+     org-agenda-compact-blocks t)
+(setq org-agenda-files '("~/Nextcloud/org/Daily/" "~/Nextcloud/org/exclusive/schedule.org"))
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(org-journal-date-format "%A, %d %B %Y" t)
- '(org-journal-date-prefix "#+TITLE: " t)
- '(org-journal-dir "~/Nextcloud/org/Daily/" t)
- '(org-journal-file-format "%Y-%m-%d.org" t)
- '(package-selected-packages (quote (org-fancy-priorities))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+
 
 ;; adding custom key-bindings for most used functions
 (map! :leader "f a"#'helm-bibtex)  ; "find article" : opens up helm bibtex for search.
@@ -335,10 +337,30 @@
    ))
 
 (after! company
-  (setq company-idle-delay 0.5
-        company-minimum-prefix-length 2)
-  (setq company-show-numbers t)
+  (setq company-idle-delay 1.5
+        company-minimum-prefix-length 2
+        company-tooltip-limit 5; smaller popup window
+;        company-selection-wrap-around t
+        company-tooltip-minimum-width 15
+;        company-tooltip-align-annotations t
+;        company-require-match t
+        company-show-numbers t)
 (add-hook 'evil-normal-state-entry-hook #'company-abort)) ;; make aborting less annoying.
+(with-eval-after-load 'company
+  (define-key company-active-map (kbd "TAB") nil)
+  (define-key company-active-map (kbd "<tab>") nil)
+  (define-key company-active-map (kbd "<down>") nil)
+  (define-key company-active-map (kbd "<up>") nil)
+  (define-key company-active-map (kbd "M-n") nil)
+  (define-key company-active-map (kbd "M-p") nil)
+;  (define-key company-active-map (kbd "RET") nil)
+;  (define-key company-active-map (kbd "<return>") nil)
+  (define-key company-active-map (kbd "C-n") #'company-select-next)
+  (define-key company-active-map (kbd "C-p") #'company-select-previous)
+;  (define-key company-active-map (kbd "C-SPC") #'company-abort))
+  (define-key company-active-map (kbd "`") #'company-abort))
+
+(setq company-transformers '(company-sort-by-occurrence))
 
 (setq-default history-length 1000) ; remembering history from precedent
 (setq-default prescient-history-length 1000)
@@ -350,14 +372,62 @@
 
 (add-hook 'Info-mode-hook #'mixed-pitch-mode)
 
+(use-package smartparens-config
+  :ensure smartparens
+  :config (progn (show-smartparens-global-mode t)))
+
+(add-hook 'prog-mode-hook 'turn-on-smartparens-strict-mode)
+(add-hook 'markdown-mode-hook 'turn-on-smartparens-strict-mode)
+
+(defmacro def-pairs (pairs)
+  "Define functions for pairing. PAIRS is an alist of (NAME . STRING)
+conses, where NAME is the function name that will be created and
+STRING is a single-character string that marks the opening character.
+
+  (def-pairs ((paren . \"(\")
+              (bracket . \"[\"))
+
+defines the functions WRAP-WITH-PAREN and WRAP-WITH-BRACKET,
+respectively."
+  `(progn
+     ,@(loop for (key . val) in pairs
+             collect
+             `(defun ,(read (concat
+                             "wrap-with-"
+                             (prin1-to-string key)
+                             "s"))
+                  (&optional arg)
+                (interactive "p")
+                (sp-wrap-with-pair ,val)))))
+
+(def-pairs ((paren . "(")
+            (bracket . "[")
+            (brace . "{")
+            (single-quote . "'")
+            (double-quote . "\"")
+            (back-quote . "`")))
+
+
+(use-package! highlight-indent-guides
+  :if (display-graphic-p)
+  :diminish
+  ;; Enable manually if needed, it a severe bug which potentially core-dumps Emacs
+  ;; https://github.com/DarthFennec/highlight-indent-guides/issues/76
+  :commands (highlight-indent-guides-mode)
+  :custom
+  (highlight-indent-guides-method 'character)
+  (highlight-indent-guides-responsive 'top)
+  (highlight-indent-guides-delay 0)
+  (highlight-indent-guides-auto-character-face-7 perc))
+
+
 (org-add-link-type "mpv" (lambda (path) (browse-url-xdg-open path)))
 (org-add-link-type "img" (lambda (path) (browse-url-xdg-open path)))
+
 
 (load! "./customize/org-templates")
 (load! "./customize/anki-notes")
 (load! "./customize/refile")
 (load! "./customize/links")
 
-
-;; (global-set-key (kbd "F10") 'my-copy-id-to-clipboard)
-;; (global-set-key (kbd "F9") 'my-id-get-or-generate)
+;;
