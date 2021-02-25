@@ -1,0 +1,20 @@
+[
+
+	{ "keys": ["l"], "type": "function", "command": "focus_next" },
+	{ "keys": ["h"], "type": "function", "command": "focus_previous" },
+
+	{ "keys": ["k"], "type": "function", "command": "move_up" },
+	{ "keys": ["j"], "type": "function", "command": "move_down" },
+	
+	{ "keys": ["ESCAPE"], "type": "function", "command": "toggle_console" },
+	
+	{ "keys": ["w"], "command": "sync" },
+	{ "keys": ["DELETE","dd"], "type": "function", "command": "delete" },
+	{ "keys": ["BACKSPACE"], "command": "todo clear $n" },
+	{ "keys": ["ss"], "command": "status" },
+	
+	{ "keys": ["mv"], "type": "prompt", "command": "ren $c \"\"", "cursorPosition": -2 },
+
+	{ "keys": ["q"], "type": "prompt", "command": "exit", "cursorPosition": -1 }
+
+]
